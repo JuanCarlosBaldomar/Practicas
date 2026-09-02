@@ -1,18 +1,23 @@
-Algoritmo SumaDosNumeros
-	// Declaración de variables
-	Definir num1, num2, suma Como Entero
-	
-	// Entrada de datos
-	Escribir "Ingrese el primer número entero: "
-	Leer num1
-	
-	Escribir "Ingrese el segundo número entero: "
-	Leer num2
-	
-	// Proceso
-	suma <- num1 + num2
-	
-	// Salida de datos
-	Escribir ""
-	Escribir "La suma de los dos números es: ", suma
-FinAlgoritmo
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Declaracion de variables
+    int num1, num2, suma;
+
+    // Entrada de datos
+    cout << "Ingrese el primer numero entero: ";
+    cin >> num1;
+
+    cout << "Ingrese el segundo numero entero: ";
+    cin >> num2;
+
+    // Proceso
+    suma = num1 + num2;
+
+    // Salida de datos
+    cout << "\nLa suma de los dos numeros es: " << suma << endl;
+
+    return 0;
+}
