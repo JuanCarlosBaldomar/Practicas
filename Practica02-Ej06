@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Declaracion de variables
+    int num1, num2, mayor;
+
+    // Entrada de datos
+    cout << "Ingrese el primer numero: ";
+    cin >> num1;
+
+    cout << "Ingrese el segundo numero: ";
+    cin >> num2;
+
+    // Condicion
+    if (num1 > num2) {
+        mayor = num1;
+    } else {
+        mayor = num2;
+    }
+
+    // Salida de datos
+    cout << "\nEl numero mayor es: " << mayor << endl;
+
+    return 0;
+}
