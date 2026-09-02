@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Declaracion de variables
+    double montoCompra, descuento = 0.0, totalFinal;
+
+    // Entrada de datos
+    cout << "Ingrese el monto de la compra (Bs): ";
+    cin >> montoCompra;
+
+    // Condicion y calculo
+    if (montoCompra > 100) {
+        descuento = montoCompra * 0.10;
+        cout << "Se aplico un descuento del 10%: " << descuento << " Bs." << endl;
+    } else {
+        cout << "No corresponde descuento." << endl;
+    }
+
+    totalFinal = montoCompra - descuento;
+
+    // Salida de datos
+    cout << "Total a pagar: " << totalFinal << " Bs." << endl;
+
+    return 0;
+}
