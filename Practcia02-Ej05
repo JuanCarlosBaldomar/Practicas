@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Declaracion de variables
+    int cantidad;
+    double total;
+    const double PRECIO_UNITARIO = 12.0;
+
+    // Entrada de datos
+    cout << "Ingrese la cantidad de cuadernos a comprar: ";
+    cin >> cantidad;
+
+    // Proceso
+    total = cantidad * PRECIO_UNITARIO;
+
+    // Salida de datos
+    cout << "\nEl total a pagar es: " << total << " Bs." << endl;
+
+    return 0;
+}
