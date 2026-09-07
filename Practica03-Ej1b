@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+int main (){
+    const int PIN_CORRECTO = 1234;
+    double saldo disponible = 5000.00;
+    int pinIngresado
+    int intentos = 0
+    bool autenticado = falso
+    
+    cout <<"--- Cajero Automático ---"<< endl;
+     
+     //Autenticación de PIN//
+    while (intentos < 3 && !autenticado) {
+            cout << "Ingrese su clave PIN: ";
+    cin >> pinIngresado;
+    
+    if (pinIngresado == PIN_CORRECTO) {
+            autenticado = true;
+    } else {
+        intentos++;
+        cout << "PIN incorrecto. Intentos restantes: " << (3 - intentos) << endl;
+        {
+    {
+    
+    if (!autenticado) {
+            cout << "\nTarjeta bloqueado por demasiado intentos fallidos." << endl;
+    return 0
+        
+    
+    
+
