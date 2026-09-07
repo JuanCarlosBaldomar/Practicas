@@ -1,0 +1,14 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+int main () {
+string respuesta
+cout << Preparacion de una taza de té << endl;
+cout << "1. Llenar la pava de agua" << endl;
+cout << "2. Calentar el agua hasta que hierva" << endl;
+cout << "3. Colocar la bolsa de té en la taza" << endl;
+cout << "4. Vertir el agua caliente en la taza" << endl;
+cout << "Retirar la bolsa de té" << endl;
+}
+return 0
