@@ -1,0 +1,31 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    double consumoKWh;
+    double totalPagar = 0.0;
+
+    cout << "=== Calculo de Factura de Energia Electrica ===" << endl;
+    cout << "Ingrese el consumo mensual de energia en kWh: ";
+    cin >> consumoKWh;
+
+    if (consumoKWh < 0) {
+        cout << "El consumo no puede ser un valor negativo." << endl;
+        return 1;
+    }
+
+    // Estructura por tramos tarifarios para Bolivia
+    if (consumoKWh <= 100) {
+        totalPagar = consumoKWh * 0.60;
+    } else if (consumoKWh <= 300) {
+        totalPagar = (100 * 0.60) + ((consumoKWh - 100) * 0.80);
+    } else {
+        totalPagar = (100 * 0.60) + (200 * 0.80) + ((consumoKWh - 300) * 1.20);
+    }
+
+    cout << "\nConsumo registrado: " << consumoKWh << " kWh" << endl;
+    cout << "Monto total a pagar: " << totalPagar << " Bs." << endl;
+
+    return 0;
+}
