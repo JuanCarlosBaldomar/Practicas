@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    double C; // Capital prestado
+    double T; // Tasa de interés mensual (en decimal)
+    int N;    // Número de cuotas
+
+    cout << "=== Calculo de Credito de Consumo ===" << endl;
+    cout << "Ingrese el capital prestado (C): ";
+    cin >> C;
+    cout << "Ingrese la tasa de interes mensual T (ej. 0.02 para 2%): ";
+    cin >> T;
+    cout << "Ingrese el numero de cuotas N: ";
+    cin >> N;
+
+    if (T <= 0 || N <= 0 || C <= 0) {
+        cout << "Los valores ingresados deben ser mayores a cero." << endl;
+        return 1;
+    }
+
+    double factor = pow(1 + T, N);
+    double cuotaMensual = C * (T * factor) / (factor - 1);
+    double montoTotal = cuotaMensual * N;
+
+    cout << "\nResultados del Credito:" << endl;
+    cout << "Cuota mensual: " << cuotaMensual << " Bs." << endl;
+    cout << "Monto total a pagar: " << montoTotal << " Bs." << endl;
+    cout << "Intereses totales: " << (montoTotal - C) << " Bs." << endl;
+
+    return 0;
+}
