@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+int main (){
+    const double PI = 3,1416
+    double radio
+    double altura
+    
+    cout <<"=== Area y Volumen de un Cilindro ===" << endl;
+    cout << "Ingrese el radio de la base: " << endl;
+    cin >> radio;
+    cout << "Ingrese la altura del cilindro: " << endl;
+    cin >> altura
+    
+    if (radio <= 0 || altura <= 0) {
+            cout << "El radio y la altura deben ser valores positivos." << endl;
+    return 1;
+    
+    }
+    
+    double areaBase = PI * pow(radio, 2);
+    double areaLateral = 2 * PI * radio * altura;
+    double areaTotal = 2 * areaBase + areaLateral;
+    double volumen = areaBase * altura;
+    
+    cout << "\nResultados: " << endl;
+    cout << "Area de la superficie total: " << areaTotal << " unidades cuadradas" << endl;
+    cout << "Volumen del cilindro: " << volumen << "unidades cubicas" << endl;
+    return 0
+    
+}
