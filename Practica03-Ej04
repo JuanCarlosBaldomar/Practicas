@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string nombre;
+    double salarioMensual;
+    int mesesTrabajados;
+
+    cout << "=== Calculo de Aguinaldo de Navidad ===" << endl;
+    cout << "Ingrese el nombre del trabajador: ";
+    cin.ignore();
+    getline(cin, nombre);
+
+    cout << "Ingrese el salario mensual (Bs.): ";
+    cin >> salarioMensual;
+
+    cout << "Ingrese los meses trabajados en el ano (1 a 12): ";
+    cin >> mesesTrabajados;
+
+    if (mesesTrabajados < 1 || mesesTrabajados > 12) {
+        cout << "Numero de meses invalido. Debe estar entre 1 y 12." << endl;
+        return 1;
+    }
+
+    double aguinaldo = (salarioMensual * mesesTrabajados) / 12.0;
+
+    cout << "\n--- Resumen de Beneficio Social ---" << endl;
+    cout << "Trabajador: " << nombre << endl;
+    cout << "Salario base: " << salarioMensual << " Bs." << endl;
+    cout << "Meses computados: " << mesesTrabajados << endl;
+    cout << "Monto del Aguinaldo: " << aguinaldo << " Bs." << endl;
+
+    return 0;
+}
