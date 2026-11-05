@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+double FAC(int n);
+double SERIE(double x, int n);
+
+int main() {
+    double x;
+    int n;
+
+    cout << "Ingrese X: ";
+    cin >> x;
+    cout << "Ingrese el ultimo exponente impar N: ";
+    cin >> n;
+
+    if (n <= 0)
+        cout << "N debe ser positivo." << endl;
+    else
+        cout << "La suma es: " << SERIE(x, n) << endl;
+
+    return 0;
+}
+
+double FAC(int n) {
+    double f = 1;
+    for (int i = 1; i <= n; i++)
+        f *= i;
+    return f;
+}
+
+double SERIE(double x, int n) {
+    double s = 0;
+    int signo = 1;
+
+    for (int i = 1; i <= n; i += 2) {
+        s += signo * pow(x, i) / FAC(i);
+        signo = signo * -1;
+    }
+    return s;
+}
