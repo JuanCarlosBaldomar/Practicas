@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int FAC(int n);
+
+int main() {
+    int n;
+    cout << "Ingrese un numero entero no negativo: ";
+    cin >> n;
+
+    if (n < 0)
+        cout << "No existe factorial para numeros negativos." << endl;
+    else
+        cout << "Factorial: " << FAC(n) << endl;
+
+    return 0;
+}
+
+int FAC(int n) {
+    int f = 1;
+    for (int i = 1; i <= n; i++)
+        f = f * i;
+    return f;
+}
