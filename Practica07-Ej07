@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int FAC(int n);
+
+int main() {
+    int n, r;
+    int C;
+
+    cout << "Ingrese n: ";
+    cin >> n;
+    cout << "Ingrese r: ";
+    cin >> r;
+
+    if (n < 0 || r < 0 || r > n) {
+        cout << "Valores no validos." << endl;
+    } else {
+        C = FAC(n) / (FAC(r) * FAC(n - r));
+        cout << "Combinatorio = " << C << endl;
+    }
+
+    return 0;
+}
+
+int FAC(int n) {
+    int f = 1;
+    for (int i = 1; i <= n; i++)
+        f *= i;
+    return f;
+}
+
