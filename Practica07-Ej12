@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool BISIESTO(int año);
+bool FECHA(int dia, int mes, int año);
+
+int main() {
+    int dia, mes, año;
+
+    cout << "Ingrese dia, mes y año: ";
+    cin >> dia >> mes >> año;
+
+    if (FECHA(dia, mes, año))
+        cout << "La fecha es valida." << endl;
+    else
+        cout << "La fecha no es valida." << endl;
+
+    return 0;
+}
+
+bool BISIESTO(int año) {
+    return (año % 400 == 0 || (año % 4 == 0 && año % 100 != 0));
+}
+
+bool FECHA(int dia, int mes, int año) {
+    int diasMes[] = {31, 28, 31, 30, 31, 30,
+                     31, 31, 30, 31, 30, 31};
+
+    if (año < 1 || mes < 1 || mes > 12)
+        return false;
+
+    if (BISIESTO(año))
+        diasMes[1] = 29;
+
+    if (dia < 1 || dia > diasMes[mes - 1])
+        return false;
+
+    return true;
+}
