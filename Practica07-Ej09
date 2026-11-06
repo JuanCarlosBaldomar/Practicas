@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int BINARIO(int x);
+
+int main() {
+    int x;
+    cout << "Ingrese un numero binario: ";
+    cin >> x;
+
+    if (x < 0) {
+        cout << "Ingrese un numero positivo." << endl;
+    } else {
+        int resultado = BINARIO(x);
+        if (resultado == -1)
+            cout << "El numero ingresado no es binario." << endl;
+        else
+            cout << "Equivalente decimal: " << resultado << endl;
+    }
+
+    return 0;
+}
+
+int BINARIO(int x) {
+    int decimal = 0;
+    int potencia = 1;
+
+    if (x == 0)
+        return 0;
+
+    while (x > 0) {
+        int digito = x % 10;
+
+        if (digito != 0 && digito != 1)
+            return -1;
+
+        decimal += digito * potencia;
+        potencia *= 2;
+        x /= 10;
+    }
+
+    return decimal;
+}
