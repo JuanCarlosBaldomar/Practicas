@@ -1,0 +1,97 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+string MENOR_MIL(int n);
+string NUMERO(int n);
+string MONTO(double R);
+
+int main() {
+    double R;
+    cout << "Ingrese el monto en Bs: ";
+    cin >> R;
+
+    if (R < 0 || R > 9999.99) {
+        cout << "Monto fuera del rango permitido." << endl;
+    } else {
+        cout << MONTO(R) << endl;
+    }
+
+    return 0;
+}
+
+string MENOR_MIL(int n) {
+    string u[] = {"cero", "uno", "dos", "tres", "cuatro", "cinco",
+                  "seis", "siete", "ocho", "nueve"};
+    string e[] = {"diez", "once", "doce", "trece", "catorce",
+                  "quince", "dieciseis", "diecisiete",
+                  "dieciocho", "diecinueve"};
+    string d[] = {"", "", "veinte", "treinta", "cuarenta",
+                  "cincuenta", "sesenta", "setenta",
+                  "ochenta", "noventa"};
+    string c[] = {"", "ciento", "doscientos", "trescientos",
+                  "cuatrocientos", "quinientos", "seiscientos",
+                  "setecientos", "ochocientos", "novecientos"};
+
+    if (n == 0) return "cero";
+    if (n == 100) return "cien";
+
+    string texto = "";
+    int centena = n / 100;
+    int resto = n % 100;
+
+    if (centena > 0) {
+        texto += c[centena];
+        if (resto > 0) texto += " ";
+    }
+
+    if (resto < 10 && resto > 0) {
+        texto += u[resto];
+    } else if (resto < 20) {
+        texto += e[resto - 10];
+    } else if (resto < 30) {
+        if (resto == 20) texto += "veinte";
+        else {
+            string especiales[] = {"", "veintiuno", "veintidos",
+                "veintitres", "veinticuatro", "veinticinco",
+                "veintiseis", "veintisiete", "veintiocho", "veintinueve"};
+            texto += especiales[resto - 20];
+        }
+    } else if (resto > 0) {
+        texto += d[resto / 10];
+        if (resto % 10 > 0)
+            texto += " y " + u[resto % 10];
+    }
+
+    return texto;
+}
+
+string NUMERO(int n) {
+    if (n == 0) return "cero";
+    if (n < 1000) return MENOR_MIL(n);
+
+    int miles = n / 1000;
+    int resto = n % 1000;
+    string texto;
+
+    if (miles == 1) texto = "mil";
+    else texto = MENOR_MIL(miles) + " mil";
+
+    if (resto > 0) texto += " " + MENOR_MIL(resto);
+    return texto;
+}
+
+string MONTO(double R) {
+    int centavosTotales = (int)(R * 100 + 0.5);
+    int entero = centavosTotales / 100;
+    int centavos = centavosTotales % 100;
+
+    string texto = NUMERO(entero);
+
+    // Ajuste de "uno" antes de "bolivianos".
+    if (texto.size() >= 3 && texto.substr(texto.size() - 3) == "uno")
+        texto = texto.substr(0, texto.size() - 3) + "un";
+
+    return texto + " " + to_string(centavos) + "/100 bolivianos";
+}
