@@ -1,0 +1,73 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+using namespace std;
+
+bool BISIESTO(int año);
+bool FECHA(int dia, int mes, int año);
+int DIAS_DESDE_INICIO(int dia, int mes, int año);
+int DIAS_ENTRE(int d1, int m1, int a1,
+                     int d2, int m2, int a2);
+
+int main() {
+    int d1, m1, a1, d2, m2, a2;
+
+    cout << "Ingrese la primera fecha (dia mes año): ";
+    cin >> d1 >> m1 >> a1;
+    cout << "Ingrese la segunda fecha (dia mes año): ";
+    cin >> d2 >> m2 >> a2;
+
+    if (!FECHA(d1, m1, a1) || !FECHA(d2, m2, a2)) {
+        cout << "Una de las fechas no es valida." << endl;
+    } else {
+        cout << "Dias transcurridos: "
+             << DIAS_ENTRE(d1, m1, a1, d2, m2, a2) << endl;
+    }
+
+    return 0;
+}
+
+bool BISIESTO(int año) {
+    return (año % 400 == 0 || (año % 4 == 0 && año % 100 != 0));
+}
+
+bool FECHA(int dia, int mes, int año) {
+    int diasMes[] = {31, 28, 31, 30, 31, 30,
+                     31, 31, 30, 31, 30, 31};
+
+    if (año < 1 || mes < 1 || mes > 12)
+        return false;
+
+    if (BISIESTO(año))
+        diasMes[1] = 29;
+
+    return (dia >= 1 && dia <= diasMes[mes - 1]);
+}
+
+int DIAS_DESDE_INICIO(int dia, int mes, int año) {
+    int dias = 365 * (año - 1)
+                   + (año - 1) / 4
+                   - (año - 1) / 100
+                   + (año - 1) / 400;
+
+    int diasMes[] = {31, 28, 31, 30, 31, 30,
+                     31, 31, 30, 31, 30, 31};
+
+    if (BISIESTO(año))
+        diasMes[1] = 29;
+
+    for (int i = 0; i < mes - 1; i++)
+        dias += diasMes[i];
+
+    dias += dia;
+    return dias;
+}
+
+int DIAS_ENTRE(int d1, int m1, int a1,
+                     int d2, int m2, int a2) {
+    int fecha1 = DIAS_DESDE_INICIO(d1, m1, a1);
+    int fecha2 = DIAS_DESDE_INICIO(d2, m2, a2);
+
+    if (fecha2 > fecha1) return fecha2 - fecha1;
+    else return fecha1 - fecha2;
+}
