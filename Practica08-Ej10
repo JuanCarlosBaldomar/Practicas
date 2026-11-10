@@ -1,0 +1,99 @@
+#include <iostream>
+using namespace std;
+
+// PROTOTIPOS
+void registrar(int V[], int n);
+bool ordenado(int V[], int n);
+void intercalar(int A[], int B[], int C[], int n, int m);
+void mostrar(int A[], int B[], int C[], int n, int m);
+
+int main() {
+    int A[100], B[100], C[200];
+    int n, m;
+
+    do {
+        cout << "Cantidad de A (1 a 100): ";
+        cin >> n;
+    } while (n < 1 || n > 100);
+
+    do {
+        cout << "Cantidad de B (1 a 100): ";
+        cin >> m;
+    } while (m < 1 || m > 100);
+
+    cout << "\nIngrese A ordenado:\n";
+    registrar(A, n);
+
+    cout << "\nIngrese B ordenado:\n";
+    registrar(B, m);
+
+    if (!ordenado(A, n) || !ordenado(B, m)) {
+        cout << "Los vectores deben estar ordenados." << endl;
+        return 0;
+    }
+
+    intercalar(A, B, C, n, m);
+    mostrar(A, B, C, n, m);
+
+    return 0;
+}
+
+// FUNCIONES
+void registrar(int V[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "Numero " << i + 1 << ": ";
+        cin >> V[i];
+    }
+}
+
+bool ordenado(int V[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        if (V[i] > V[i + 1])
+            return false;
+    }
+    return true;
+}
+
+void intercalar(int A[], int B[], int C[], int n, int m) {
+    int i = 0, j = 0, k = 0;
+
+    while (i < n && j < m) {
+        if (A[i] <= B[j]) {
+            C[k] = A[i];
+            i++;
+        }
+        else {
+            C[k] = B[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n) {
+        C[k] = A[i];
+        i++;
+        k++;
+    }
+
+    while (j < m) {
+        C[k] = B[j];
+        j++;
+        k++;
+    }
+}
+
+void mostrar(int A[], int B[], int C[], int n, int m) {
+    cout << "\nVector A: ";
+    for (int i = 0; i < n; i++)
+        cout << A[i] << " ";
+
+    cout << "\nVector B: ";
+    for (int i = 0; i < m; i++)
+        cout << B[i] << " ";
+
+    cout << "\nVector intercalado: ";
+    for (int i = 0; i < n + m; i++)
+        cout << C[i] << " ";
+
+    cout << endl;
+}
