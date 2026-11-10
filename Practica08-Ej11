@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+// PROTOTIPOS
+void registrar(float A[], int n);
+void contar(float A[], int n, int &pos, int &neg, int &ceros);
+void mostrar(float A[], int n, int pos, int neg, int ceros);
+
+int main() {
+    float A[100];
+    int n, pos, neg, ceros;
+
+    do {
+        cout << "Cantidad de elementos (1 a 100): ";
+        cin >> n;
+    } while (n < 1 || n > 100);
+
+    registrar(A, n);
+    contar(A, n, pos, neg, ceros);
+    mostrar(A, n, pos, neg, ceros);
+
+    return 0;
+}
+
+// FUNCIONES
+void registrar(float A[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "Numero " << i + 1 << ": ";
+        cin >> A[i];
+    }
+}
+
+void contar(float A[], int n, int &pos, int &neg, int &ceros) {
+    pos = 0;
+    neg = 0;
+    ceros = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (A[i] > 0)
+            pos++;
+        else if (A[i] < 0)
+            neg++;
+        else
+            ceros++;
+    }
+}
+
+void mostrar(float A[], int n, int pos, int neg, int ceros) {
+    cout << "\nVector: ";
+    for (int i = 0; i < n; i++)
+        cout << A[i] << " ";
+
+    cout << "\nPositivos: " << pos;
+    cout << "\nNegativos: " << neg;
+    cout << "\nCeros: " << ceros << endl;
+}
