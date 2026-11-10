@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+void registrar(int v[], int n);
+void extremos(int v[], int n, int &mayor);
+void mostrar(int v[], int n);
+
+int main() {
+   int numero[100], n, mayor;
+   
+   cout << "Ingrese la cantidad de elementos: ";
+   cin >> n;
+   
+   
+   registrar(numero, n);
+   extremos(numero, n, mayor);
+   mostrar(numero, n);
+   
+   cout << "El valor maximo es: " << mayor << endl;
+   
+   return 0;
+   }
+
+
+ void registrar(int v[], int n) {
+ for (int i = 0; i < n; i++) {
+    cout << "Numero " << i+1 << ": ";
+    cin >> v[i];
+    }
+}
+
+void extremos(int v[], int n, int &mayor){
+    mayor = v[0];
+    for (int i = 1; i < n; i++) {
+        if (v[i] > mayor) mayor = v[i];
+    }
+}
+
+void mostrar(int v[], int n) {
+    cout << "Numeros: ";
+    for (int i = 0; i < n; i++){
+        cout << v[i] << " ";
+        }
+        cout << endl;
+}
