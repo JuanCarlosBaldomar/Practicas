@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+
+// PROTOTIPOS
+void registrar(int V[], int n);
+void concatenar(int A[], int B[], int C[], int n, int m);
+void mostrar(int A[], int B[], int C[], int n, int m);
+
+int main() {
+    int A[100], B[100], C[200];
+    int n, m;
+
+    do {
+        cout << "Cantidad de A (1 a 100): ";
+        cin >> n;
+    } while (n < 1 || n > 100);
+
+    do {
+        cout << "Cantidad de B (1 a 100): ";
+        cin >> m;
+    } while (m < 1 || m > 100);
+
+    cout << "\nRegistrar A:\n";
+    registrar(A, n);
+
+    cout << "\nRegistrar B:\n";
+    registrar(B, m);
+
+    concatenar(A, B, C, n, m);
+    mostrar(A, B, C, n, m);
+
+    return 0;
+}
+
+// FUNCIONES
+void registrar(int V[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "Numero " << i + 1 << ": ";
+        cin >> V[i];
+    }
+}
+
+void concatenar(int A[], int B[], int C[], int n, int m) {
+    for (int i = 0; i < n; i++) {
+        C[i] = A[i];
+    }
+
+    for (int i = 0; i < m; i++) {
+        C[n + i] = B[i];
+    }
+}
+
+void mostrar(int A[], int B[], int C[], int n, int m) {
+    cout << "\nVector A: ";
+    for (int i = 0; i < n; i++)
+        cout << A[i] << " ";
+
+    cout << "\nVector B: ";
+    for (int i = 0; i < m; i++)
+        cout << B[i] << " ";
+
+    cout << "\nVector C: ";
+    for (int i = 0; i < n + m; i++)
+        cout << C[i] << " ";
+
+    cout << endl;
+}
