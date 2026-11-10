@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+
+void registrar(int A[], int n);
+void eliminarDuplicados(int A[], int B[], int n, int &m);
+void mostrar(int A[], int B[], int n, int m);
+
+int main() {
+    int A[100], B[100];
+    int n, m;
+
+    do {
+        cout << "Cantidad de elementos (1 a 100): ";
+        cin >> n;
+    } while (n < 1 || n > 100);
+
+    registrar(A, n);
+    eliminarDuplicados(A, B, n, m);
+    mostrar(A, B, n, m);
+
+    return 0;
+}
+
+
+void registrar(int A[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "Numero " << i + 1 << ": ";
+        cin >> A[i];
+    }
+}
+
+void eliminarDuplicados(int A[], int B[], int n, int &m) {
+    m = 0;
+
+    for (int i = 0; i < n; i++) {
+        bool repetido = false;
+
+        for (int j = 0; j < m; j++) {
+            if (A[i] == B[j]) {
+                repetido = true;
+            }
+        }
+
+        if (repetido == false) {
+            B[m] = A[i];
+            m++;
+        }
+    }
+}
+
+void mostrar(int A[], int B[], int n, int m) {
+    cout << "\nVector original: ";
+    for (int i = 0; i < n; i++)
+        cout << A[i] << " ";
+
+    cout << "\nSin duplicados: ";
+    for (int i = 0; i < m; i++)
+        cout << B[i] << " ";
+
+    cout << "\nCantidad de elementos: " << m << endl;
+}
