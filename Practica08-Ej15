@@ -1,0 +1,68 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+void registrar(string nombres[], float notas[], int n);
+void ordenar(string nombres[], float notas[], int n);
+void mostrar(string nombres[], float notas[], int n);
+
+int main() {
+    string nombres[100];
+    float notas[100];
+    int n;
+
+    do {
+        cout << "Cantidad de estudiantes (3 a 100): ";
+        cin >> n;
+    } while (n < 3 || n > 100);
+
+    registrar(nombres, notas, n);
+    ordenar(nombres, notas, n);
+    mostrar(nombres, notas, n);
+
+    return 0;
+}
+
+
+void registrar(string nombres[], float notas[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "\nEstudiante " << i + 1 << endl;
+
+        cout << "Nombre: ";
+        getline(cin >> ws, nombres[i]);
+
+        do {
+            cout << "Nota (0 a 100): ";
+            cin >> notas[i];
+        } while (notas[i] < 0 || notas[i] > 100);
+    }
+}
+
+void ordenar(string nombres[], float notas[], int n) {
+    float auxNota;
+    string auxNombre;
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - 1 - i; j++) {
+            if (notas[j] < notas[j + 1]) {
+                auxNota = notas[j];
+                notas[j] = notas[j + 1];
+                notas[j + 1] = auxNota;
+
+                auxNombre = nombres[j];
+                nombres[j] = nombres[j + 1];
+                nombres[j + 1] = auxNombre;
+            }
+        }
+    }
+}
+
+void mostrar(string nombres[], float notas[], int n) {
+    cout << "\nTRES MEJORES ESTUDIANTES\n";
+
+    for (int i = 0; i < 3; i++) {
+        cout << i + 1 << ". " << nombres[i]
+             << " - Nota: " << notas[i] << endl;
+    }
+}
