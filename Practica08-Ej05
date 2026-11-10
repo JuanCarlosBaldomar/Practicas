@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+
+// PROTOTIPOS
+void registrar(int A[], int n);
+bool capicua(int A[], int n);
+void mostrar(int A[], int n);
+
+// MAIN
+int main() {
+    int A[100], n;
+    bool respuesta;
+
+    cout << "Ingrese la cantidad de elementos: ";
+    cin >> n;
+
+    if (n <= 0 || n > 100) {
+        cout << "Cantidad no valida" << endl;
+        return 0;
+    }
+
+    registrar(A, n);
+
+    cout << "\nRESULTADOS" << endl;
+    mostrar(A, n);
+
+    respuesta = capicua(A, n);
+
+    if (respuesta == true) {
+        cout << "El vector es capicua" << endl;
+    }
+    else {
+        cout << "El vector no es capicua" << endl;
+    }
+
+    return 0;
+}
+
+// FUNCIONES
+
+void registrar(int A[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "Numero " << i + 1 << ": ";
+        cin >> A[i];
+    }
+}
+
+bool capicua(int A[], int n) {
+    bool resultado = true;
+
+    for (int i = 0; i < n / 2; i++) {
+        if (A[i] != A[n - 1 - i]) {
+            resultado = false;
+        }
+    }
+
+    return resultado;
+}
+
+void mostrar(int A[], int n) {
+    cout << "Vector: ";
+
+    for (int i = 0; i < n; i++) {
+        cout << A[i] << " ";
+    }
+
+    cout << endl;
+}
