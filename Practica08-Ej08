@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void registrar(float A[], int n);
+void mayorDiferencia(float A[], int n, float &mayor, int &pos);
+void mostrar(float A[], int n, float mayor, int pos);
+
+int main() {
+    float A[100], mayor;
+    int n, pos;
+
+    do {
+        cout << "Cantidad de elementos (2 a 100): ";
+        cin >> n;
+    } while (n < 2 || n > 100);
+
+    registrar(A, n);
+    mayorDiferencia(A, n, mayor, pos);
+    mostrar(A, n, mayor, pos);
+
+    return 0;
+}
+
+void registrar(float A[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "Numero " << i + 1 << ": ";
+        cin >> A[i];
+    }
+}
+
+void mayorDiferencia(float A[], int n, float &mayor, int &pos) {
+    mayor = fabs(A[1] - A[0]);
+    pos = 0;
+
+    for (int i = 1; i < n - 1; i++) {
+        float diferencia = fabs(A[i + 1] - A[i]);
+
+        if (diferencia > mayor) {
+            mayor = diferencia;
+            pos = i;
+        }
+    }
+}
+
+void mostrar(float A[], int n, float mayor, int pos) {
+    cout << "\nVector: ";
+    for (int i = 0; i < n; i++) {
+        cout << A[i] << " ";
+    }
+
+    cout << "\nMayor diferencia: " << mayor << endl;
+    cout << "Entre: " << A[pos] << " y " << A[pos + 1] << endl;
+}
