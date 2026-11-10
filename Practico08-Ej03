@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+void registrar(float v[], int n);
+float promedio(float v[], int n);
+void mostrar(float v[], int n);
+
+int main () {
+    float numero[100]; 
+    int n;
+    
+cout << "Ingrese la cantidad de elementos: ";
+cin >> n;
+
+registrar(numero, n);
+
+float prom;
+    prom = promedio(numero, n);
+    
+mostrar (numero, n);
+
+cout << "El promedio de los numeros es: " << prom << endl;
+
+return 0;
+
+}
+
+void registrar(float v[], int n) {
+for (int i = 0; i < n; i++) {
+cout << "Numero: "<< i + 1 << ":";
+cin >> v[i];
+    }
+}
+
+float promedio(float v[], int n) {
+    float suma = 0;
+    for (int i = 0; i < n; i++)
+        suma += v[i];
+    return (float)suma / n;
+    }
+    
+void mostrar(float v[], int n) {
+    cout << "Valores: ";
+    for (int i = 0; i < n; i++) {
+        cout << v[i] << " ";
+        }
+        cout << endl;
+    }
+
