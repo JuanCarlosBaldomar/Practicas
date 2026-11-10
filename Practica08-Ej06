@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+// PROTOTIPOS
+void registrar(float A[], int n);
+void calcularPromedios(float A[], float B[], int n);
+void mostrar(float A[], float B[], int n);
+
+int main() {
+    float A[100], B[100];
+    int n;
+
+    cout << "Ingrese la cantidad de elementos: ";
+    cin >> n;
+
+    if (n < 3 || n > 100) {
+        cout << "Cantidad no valida" << endl;
+        return 0;
+    }
+
+    registrar(A, n);
+    calcularPromedios(A, B, n);
+
+    cout << "\nRESULTADOS" << endl;
+    mostrar(A, B, n);
+
+    return 0;
+}
+
+// FUNCIONES
+
+void registrar(float A[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "Numero " << i + 1 << ": ";
+        cin >> A[i];
+    }
+}
+
+void calcularPromedios(float A[], float B[], int n) {
+    for (int i = 0; i < n - 2; i++) {
+        B[i] = (A[i] + A[i + 1] + A[i + 2]) / 3.0;
+    }
+}
+
+void mostrar(float A[], float B[], int n) {
+    cout << "Vector original: ";
+
+    for (int i = 0; i < n; i++) {
+        cout << A[i] << " ";
+    }
+
+    cout << "\nPromedios: ";
+
+    for (int i = 0; i < n - 2; i++) {
+        cout << B[i] << " ";
+    }
+
+    cout << endl;
+}
